@@ -1,7 +1,7 @@
 name: keyword_extractor_lite
 description: A lightweight, zero-dependency Dart package for extracting frequent keywords from text. Perfect for auto-tagging, SEO analysis, and content categorization.
 version: 1.0.0
-repository: https://github.com/my_org/my_repo
+repository: https://github.com/ae-ertgrl/keyword_extractor_lite
 
 environment:
   sdk: ^3.10.1

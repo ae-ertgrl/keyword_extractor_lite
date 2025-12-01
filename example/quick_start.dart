@@ -9,10 +9,11 @@ void main() {
   // ═══════════════════════════════════════════════════════════
   print('1️⃣  En Basit Kullanım:');
   print('─' * 50);
-  
-  final metin = 'Flutter ile mobil uygulama geliştirmek çok kolay ve eğlenceli.';
+
+  final metin =
+      'Flutter ile mobil uygulama geliştirmek çok kolay ve eğlenceli.';
   final kelimeler = KeywordExtractor.extract(metin);
-  
+
   print('Metin: $metin');
   print('Anahtar Kelimeler: $kelimeler\n');
 
@@ -21,12 +22,12 @@ void main() {
   // ═══════════════════════════════════════════════════════════
   print('2️⃣  Limit Belirleyerek (Top 3):');
   print('─' * 50);
-  
+
   final uzunMetin = '''
     Dart programlama dili modern, güçlü ve verimli bir dildir.
     Dart ile hem mobil hem web uygulamaları geliştirebilirsiniz.
   ''';
-  
+
   final top3 = KeywordExtractor.extract(uzunMetin, limit: 3);
   print('Top 3 Kelime: $top3\n');
 
@@ -35,10 +36,10 @@ void main() {
   // ═══════════════════════════════════════════════════════════
   print('3️⃣  Frekans Bilgisi ile:');
   print('─' * 50);
-  
+
   final tekrarliMetin = 'Flutter Flutter Dart Dart Dart uygulama';
   final frekans = KeywordExtractor.extractWithFrequency(tekrarliMetin);
-  
+
   print('Metin: $tekrarliMetin');
   frekans.forEach((kelime, sayi) {
     print('  • $kelime: $sayi kez');
@@ -50,7 +51,7 @@ void main() {
   // ═══════════════════════════════════════════════════════════
   print('4️⃣  Blog Yazısı Etiketleme:');
   print('─' * 50);
-  
+
   final blog = BlogYazisi(
     baslik: 'Serverpod ile Backend Geliştirme',
     icerik: '''
@@ -58,7 +59,7 @@ void main() {
       API geliştirme, veritabanı yönetimi ve real-time özellikler sunar.
     ''',
   );
-  
+
   print('Blog: ${blog.baslik}');
   print('Etiketler: ${blog.etiketler}\n');
 
@@ -67,12 +68,12 @@ void main() {
   // ═══════════════════════════════════════════════════════════
   print('5️⃣  Ürün Otomatik Etiketleme:');
   print('─' * 50);
-  
+
   final urun = Urun(
     ad: 'Kablosuz Bluetooth Kulaklık',
     aciklama: 'Premium ses kalitesi, uzun pil ömrü, konforlu tasarım',
   );
-  
+
   print('Ürün: ${urun.ad}');
   print('Otomatik Etiketler: ${urun.etiketler}\n');
 

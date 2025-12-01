@@ -15,15 +15,15 @@ void main() {
     devrim niteliğinde gelişmeler yaşandı. Yapay zeka uygulamaları 
     artık günlük hayatımızın her alanında kullanılıyor.
   ''';
-  
+
   print('📄 Metin:\n${techBlog.trim()}\n');
-  
+
   final techKeywords = KeywordExtractor.extract(techBlog, limit: 8);
   print('🔑 Çıkarılan Anahtar Kelimeler (Top 8):');
   for (var i = 0; i < techKeywords.length; i++) {
     print('   ${i + 1}. ${techKeywords[i]}');
   }
-  
+
   final techFreq = KeywordExtractor.extractWithFrequency(techBlog, limit: 5);
   print('\n📊 Frekans Analizi (Top 5):');
   techFreq.forEach((word, count) {
@@ -41,9 +41,9 @@ void main() {
     30 saat kesintisiz müzik dinleme. Ergonomik tasarım ve konforlu 
     kullanım. Bluetooth 5.0 teknolojisi ile hızlı ve kararlı bağlantı.
   ''';
-  
+
   print('📄 Ürün Açıklaması:\n${productDesc.trim()}\n');
-  
+
   final productTags = KeywordExtractor.extract(productDesc, limit: 10);
   print('🏷️  Otomatik Etiketler:');
   print('   ${productTags.join(', ')}\n\n');
@@ -59,10 +59,13 @@ void main() {
     Mobil uyumlu web tasarımı ve hızlı sayfa yükleme süreleri 
     SEO sıralamalarını doğrudan etkiler.
   ''';
-  
+
   print('📄 SEO İçeriği:\n${seoContent.trim()}\n');
-  
-  final seoAnalysis = KeywordExtractor.extractWithFrequency(seoContent, limit: 10);
+
+  final seoAnalysis = KeywordExtractor.extractWithFrequency(
+    seoContent,
+    limit: 10,
+  );
   print('📈 SEO Anahtar Kelime Yoğunluğu:');
   final totalWords = seoAnalysis.values.reduce((a, b) => a + b);
   seoAnalysis.forEach((word, count) {
@@ -80,9 +83,9 @@ void main() {
     Google Play'de. Kullanıcı deneyimi odaklı tasarım ve yüksek 
     performans. Hemen indirin ve deneyimleyin!
   ''';
-  
+
   print('📄 Sosyal Medya Metni:\n${socialPost.trim()}\n');
-  
+
   final socialTags = KeywordExtractor.extract(socialPost, limit: 6);
   print('🏷️  Önerilen Hashtag\'ler:');
   print('   ${socialTags.map((tag) => '#$tag').join(' ')}\n\n');
@@ -96,9 +99,9 @@ void main() {
     katkı sağlıyor. Yabancı yatırımlar artış gösterirken, istihdam 
     oranları da yükseliyor. Ekonomik göstergeler pozitif sinyaller veriyor.
   ''';
-  
+
   print('📄 Haber Metni:\n${newsArticle.trim()}\n');
-  
+
   final newsKeywords = KeywordExtractor.extract(newsArticle, limit: 7);
   print('🔑 Ana Konular:');
   for (var i = 0; i < newsKeywords.length; i++) {
@@ -109,18 +112,19 @@ void main() {
   // Test 6: Performans Testi
   print('⚡ TEST 6: Performans Analizi');
   print('─' * 60);
-  final longText = '''
+  final longText =
+      '''
     ${techBlog * 5}
     ${productDesc * 3}
     ${seoContent * 4}
   ''';
-  
+
   print('📄 Test Metni: ${longText.length} karakter\n');
-  
+
   final stopwatch = Stopwatch()..start();
   final perfKeywords = KeywordExtractor.extract(longText, limit: 15);
   stopwatch.stop();
-  
+
   print('⏱️  İşlem Süresi: ${stopwatch.elapsedMilliseconds} ms');
   print('📊 Kelime Sayısı: ${longText.split(RegExp(r'\s+')).length}');
   print('🔑 Çıkarılan Kelime: ${perfKeywords.length}');
@@ -129,27 +133,35 @@ void main() {
   // Test 7: Edge Cases
   print('🧪 TEST 7: Edge Case Testleri');
   print('─' * 60);
-  
+
   // Boş metin
   final empty = KeywordExtractor.extract('');
   print('✓ Boş metin: ${empty.isEmpty ? "BAŞARILI" : "BAŞARISIZ"}');
-  
+
   // Sadece stop-word'ler
   final stopWords = KeywordExtractor.extract('ve ile ama fakat için bir bu şu');
   print('✓ Sadece stop-words: ${stopWords.isEmpty ? "BAŞARILI" : "BAŞARISIZ"}');
-  
+
   // Özel karakterler
-  final special = KeywordExtractor.extract('Flutter! Dart? Test... #hashtag @mention');
-  print('✓ Özel karakterler: ${special.contains("flutter") ? "BAŞARILI" : "BAŞARISIZ"}');
-  
+  final special = KeywordExtractor.extract(
+    'Flutter! Dart? Test... #hashtag @mention',
+  );
+  print(
+    '✓ Özel karakterler: ${special.contains("flutter") ? "BAŞARILI" : "BAŞARISIZ"}',
+  );
+
   // Türkçe karakterler
-  final turkish = KeywordExtractor.extract('çalışma güvenlik şifreleme öğrenme');
-  print('✓ Türkçe karakterler: ${turkish.contains("çalışma") ? "BAŞARILI" : "BAŞARISIZ"}');
-  
+  final turkish = KeywordExtractor.extract(
+    'çalışma güvenlik şifreleme öğrenme',
+  );
+  print(
+    '✓ Türkçe karakterler: ${turkish.contains("çalışma") ? "BAŞARILI" : "BAŞARISIZ"}',
+  );
+
   // Negatif limit
   final negative = KeywordExtractor.extract('test', limit: -5);
   print('✓ Negatif limit: ${negative.isEmpty ? "BAŞARILI" : "BAŞARISIZ"}');
-  
+
   print('\n');
 
   // Özet

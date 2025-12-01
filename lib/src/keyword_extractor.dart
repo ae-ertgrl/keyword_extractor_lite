@@ -73,9 +73,9 @@ class KeywordExtractor {
     // Convert to lowercase and clean special characters
     // Preserve Turkish characters: ğ, ü, ş, ı, ö, ç
     final cleanText = text.toLowerCase().replaceAll(
-          RegExp(r'[^\w\sğüşıöç]'),
-          '',
-        );
+      RegExp(r'[^\w\sğüşıöç]'),
+      '',
+    );
 
     // Split into words
     final words = cleanText.split(RegExp(r'\s+'));
@@ -121,9 +121,9 @@ class KeywordExtractor {
     if (limit <= 0) return {};
 
     final cleanText = text.toLowerCase().replaceAll(
-          RegExp(r'[^\w\sğüşıöç]'),
-          '',
-        );
+      RegExp(r'[^\w\sğüşıöç]'),
+      '',
+    );
 
     final words = cleanText.split(RegExp(r'\s+'));
     final frequencyMap = <String, int>{};

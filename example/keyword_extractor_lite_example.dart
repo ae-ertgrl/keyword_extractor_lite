@@ -30,15 +30,12 @@ void main() {
 
   // Example 3: Blog Post Auto-Tagging
   print('Example 3: Blog Post Auto-Tagging');
-  final blogPost = BlogPost(
-    'Flutter ile Mobil Uygulama Geliştirme',
-    '''
+  final blogPost = BlogPost('Flutter ile Mobil Uygulama Geliştirme', '''
       Flutter, Google tarafından geliştirilen açık kaynaklı bir UI framework'tür.
       Dart programlama dili kullanarak iOS ve Android için native uygulamalar 
       geliştirebilirsiniz. Hot reload özelliği sayesinde geliştirme süreci 
       oldukça hızlı ve verimlidir.
-    ''',
-  );
+    ''');
 
   blogPost.generateTags();
   print('Blog Title: ${blogPost.title}');
@@ -53,7 +50,10 @@ void main() {
     artık daha verimli.
   ''';
 
-  final keywordsWithFreq = KeywordExtractor.extractWithFrequency(text4, limit: 5);
+  final keywordsWithFreq = KeywordExtractor.extractWithFrequency(
+    text4,
+    limit: 5,
+  );
   print('Text: ${text4.replaceAll('\n', ' ').trim()}');
   print('Keywords with Frequency:');
   keywordsWithFreq.forEach((keyword, frequency) {
@@ -63,14 +63,11 @@ void main() {
 
   // Example 5: Product Description Tagging
   print('Example 5: Product Description Auto-Tagging');
-  final product = ProductDescription(
-    'Profesyonel Fotoğraf Makinesi',
-    '''
+  final product = ProductDescription('Profesyonel Fotoğraf Makinesi', '''
       Yüksek çözünürlüklü sensör ve gelişmiş görüntü işleme teknolojisi ile 
       profesyonel fotoğrafçılık deneyimi. 4K video çekim, optik görüntü 
       sabitleme ve geniş dinamik aralık özellikleri.
-    ''',
-  );
+    ''');
 
   final productTags = product.autoTags();
   print('Product: ${product.title}');
